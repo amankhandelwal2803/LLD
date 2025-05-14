@@ -9,7 +9,7 @@ public class MinuteBasedPricingStrategy implements PricingStrategy {
 
     @Override
     public double price(Ticket ticket) {
-        long hours = Duration.between(ticket.entryTime, LocalDateTime.now()).toMinutes();
-        return hours * ticket.parkingSpot.getPrice();
+        long minutes = Duration.between(ticket.entryTime, LocalDateTime.now()).toMinutes();
+        return minutes * ticket.parkingSpot.getPrice();
     }
 }

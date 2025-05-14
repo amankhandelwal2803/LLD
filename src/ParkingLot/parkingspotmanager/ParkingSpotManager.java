@@ -19,13 +19,12 @@ public class ParkingSpotManager {
         return parkingStrategy.findSpace(parkingSpots);
     }
 
-    public synchronized boolean parkVehicle(Vehicle vehicle) {
+    public synchronized ParkingSpot parkVehicle(Vehicle vehicle) {
         ParkingSpot spot = findParkingSpace();
         if (spot != null) {
             spot.parkVehicle(vehicle);
-            return true;
         }
-        return false;
+        return spot;
     }
 
     public synchronized void removeVehicle(ParkingSpot spot) {

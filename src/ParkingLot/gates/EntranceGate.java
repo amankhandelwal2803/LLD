@@ -17,9 +17,9 @@ public class EntranceGate {
 
     public Ticket processVehicle(Vehicle vehicle) {
         ParkingSpotManager manager = managerFactory.getManager(vehicle.getVehicleType());
-        if (manager.parkVehicle(vehicle)) {
-            ParkingSpot spot = manager.findParkingSpace(); // Returns the spot where the vehicle is parked
-            return new Ticket(LocalDateTime.now(), vehicle, spot);
+        ParkingSpot parkingSpot = manager.parkVehicle(vehicle);
+        if (parkingSpot != null) {
+            return new Ticket(LocalDateTime.now(), vehicle, parkingSpot);
         }
         return null;
     }
